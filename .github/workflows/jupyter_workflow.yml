@@ -1,0 +1,19 @@
+name: Jupyter Notebook Workflow
+
+on:
+  push:
+    paths:
+      - '**/*.ipynb'  # Run workflow when an IPython Notebook is pushed
+
+jobs:
+  convert-notebook:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Convert Notebook to HTML
+        uses: jupyter/nbconvert-action@v2
+        with:
+          notebook_file: Prediction of user clicks on Ads.ipynb
+          output_file: output.html
